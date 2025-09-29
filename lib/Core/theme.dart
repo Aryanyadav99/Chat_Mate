@@ -39,7 +39,8 @@ class AppColors {
   // Status Colors
   static const Color onlineGreen = Color(0xFF2ECC71);   // Modern green
   static const Color offlineGray = Color(0xFF95A5A6);   // Soft muted gray
-  static const Color awayOrange = Color(0xFFF39C12);    // Warm orange
+  static const Color awayOrange = Color(0xFFF39C12);// Warm orange
+  static const Color messageListPage = Color(0xFF292F3F);
 }
 
 class AppTheme {
