@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'features/auth/presentation/widgets/auth_button.dart';
+import 'features/auth/presentation/widgets/auth_input_field.dart';
+import 'features/auth/presentation/widgets/switch_prompt.dart';
+
 class RegisterPageDemo extends StatefulWidget {
   const RegisterPageDemo({super.key});
 
@@ -54,98 +58,26 @@ class _RegisterPageState extends State<RegisterPageDemo> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 40),
-                _buildTextInput('Username', Icons.person, _usernameController),
                 const SizedBox(height: 20),
-                _buildTextInput('Email', Icons.mail, _emailController),
+                AuthInputField(hint: 'Name',icon:  Icons.person, controller: _usernameController,isPassword: false),
                 const SizedBox(height: 20),
-                _buildTextInput(
-                  'Password',
-                  Icons.lock,
-                  _passwordController,
+                AuthInputField(hint: 'Email',icon:  Icons.mail, controller: _emailController,isPassword: false),
+                const SizedBox(height: 20),
+                AuthInputField(
+                  hint: 'Password',
+                  icon:Icons.lock,
+                  controller: _passwordController,
                   isPassword: true,
                 ),
                 const SizedBox(height: 30),
-                _buildRegisterButton(),
+                AuthButton(text:"Register", onPressed: (){}),
                 const SizedBox(height: 20),
-                _buildLoginPrompt(),
+                AuthSwitchPrompt(command: "Already having an account ?", destination: "Click to login", onTap: (){}),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildTextInput(
-      String hint,
-      IconData icon,
-      TextEditingController controller, {
-        bool isPassword = false,
-      }) {
-    return TextField(
-      controller: controller,
-      obscureText: isPassword,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Colors.grey[400]),
-        hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey[500]),
-        filled: true,
-        fillColor: Colors.grey[900],
-        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Color(0xFF00BFA6), width: 1.5),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildRegisterButton() {
-    return ElevatedButton(
-      onPressed: () {
-        _showInputValue();
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF00BFA6),
-        foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        elevation: 4,
-      ),
-      child: const Text(
-        "Register",
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-
-  Widget _buildLoginPrompt() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Already have an account? ",
-          style: TextStyle(color: Colors.grey[400]),
-        ),
-        GestureDetector(
-          onTap: () {
-            // Navigate to login page
-          },
-          child: const Text(
-            "Login",
-            style: TextStyle(
-              color: Color(0xFF00BFA6),
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-      ],
     );
   }
 
