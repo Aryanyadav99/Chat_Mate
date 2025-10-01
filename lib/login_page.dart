@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
-class RegisterPageDemo extends StatefulWidget {
-  const RegisterPageDemo({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<RegisterPageDemo> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPageDemo> {
-  final TextEditingController _usernameController = TextEditingController();
+class _RegisterPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  void _showInputValue(){
+    String email=_emailController.text;
+    String password=_passwordController.text;
+    print(" Email : $email -Password : -$password ");
+  }
+  @override
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +42,7 @@ class _RegisterPageState extends State<RegisterPageDemo> {
                 const SizedBox(height: 20),
                 Center(
                   child: Text(
-                    'Sign Up',
+                    'Sign In',
                     style: TextStyle(
                       fontSize: 42,
                       fontWeight: FontWeight.w700,
@@ -42,8 +51,6 @@ class _RegisterPageState extends State<RegisterPageDemo> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 40),
-                _buildTextInput('Username', Icons.person, _usernameController),
                 const SizedBox(height: 20),
                 _buildTextInput('Email', Icons.mail, _emailController),
                 const SizedBox(height: 20),
@@ -96,7 +103,9 @@ class _RegisterPageState extends State<RegisterPageDemo> {
 
   Widget _buildRegisterButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        _showInputValue();
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF00BFA6),
         foregroundColor: Colors.white,
@@ -105,7 +114,7 @@ class _RegisterPageState extends State<RegisterPageDemo> {
         elevation: 4,
       ),
       child: const Text(
-        "Register",
+        "Login",
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
@@ -116,7 +125,7 @@ class _RegisterPageState extends State<RegisterPageDemo> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Already have an account? ",
+          "Not have an account? ",
           style: TextStyle(color: Colors.grey[400]),
         ),
         GestureDetector(
@@ -124,7 +133,7 @@ class _RegisterPageState extends State<RegisterPageDemo> {
             // Navigate to login page
           },
           child: const Text(
-            "Login",
+            "SignUp",
             style: TextStyle(
               color: Color(0xFF00BFA6),
               fontWeight: FontWeight.w600,

@@ -11,7 +11,19 @@ class _RegisterPageState extends State<RegisterPageDemo> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  void _showInputValue(){
+    String userName=_usernameController.text;
+    String email=_emailController.text;
+    String password=_passwordController.text;
+    print("UserName : $userName - Email : $email -Password : -$password ");
+  }
+  @override
+  void dispose(){
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +108,9 @@ class _RegisterPageState extends State<RegisterPageDemo> {
 
   Widget _buildRegisterButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        _showInputValue();
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF00BFA6),
         foregroundColor: Colors.white,
@@ -134,4 +148,5 @@ class _RegisterPageState extends State<RegisterPageDemo> {
       ],
     );
   }
+
 }
