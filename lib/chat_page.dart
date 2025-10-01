@@ -9,6 +9,9 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:AppColors.backgroundDark,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
         title: Row(
           children: [
             const CircleAvatar(
@@ -18,7 +21,10 @@ class ChatPage extends StatelessWidget {
             SizedBox(width:10),
             Text(
               'Aryan',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+              ),
             )
           ],
         ),
@@ -29,37 +35,40 @@ class ChatPage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-              child:ListView(
-                padding: EdgeInsets.all(20),
-                children: [
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                  _buildRecievedMessage(context,'new message for you '),
-                  _buildSenderMessage(context,'got your message '),
-                ],
-              )
-          ),
-          _buildMessageInput(),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+                child:ListView(
+                  padding: EdgeInsets.all(20),
+                  children: [
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                    _buildRecievedMessage(context,'new message for you '),
+                    _buildSenderMessage(context,'got your message '),
+                  ],
+                )
+            ),
+            _buildMessageInput(),
+          ],
+        ),
       ),
     );
   }
 }
 
 Widget _buildRecievedMessage(BuildContext context, String message) {
+  final isDark=Theme.of(context).brightness == Brightness.dark;
   return Align(
     alignment: Alignment.centerLeft,
     child: Container(

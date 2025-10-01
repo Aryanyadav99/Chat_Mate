@@ -17,8 +17,8 @@ class AppColors {
   static const Color surfaceLight = Color(0xFFFFFFFF);    // White cards
   static const Color errorLight = Color(0xFFE74C3C);      // Soft red
 
-  // Dark Theme Colors (not pure black, modern gray tones)
-  static const Color primaryDark = Color(0xFF5B9BEB);     // Light bluish accent
+  // Dark Theme Colors (matching RegisterPageDemo aesthetic)
+  static const Color primaryDark = Color(0xFF00BFA6);     // Teal accent from register
   static const Color secondaryDark = Color(0xFF4DD0E1);   // Teal accent
   static const Color backgroundDark = Color(0xFF1E1F25);  // Soft dark gray (not black)
   static const Color surfaceDark = Color(0xFF2A2C36);     // Card gray
@@ -30,17 +30,21 @@ class AppColors {
   static const Color textPrimaryDark = Color(0xFFEAECEE);    // Soft white
   static const Color textSecondaryDark = Color(0xFF95A5A6);  // Muted gray
 
-  // Chat Colors
-  static const Color chatBubbleUser = Color(0xFF4A90E2);     // Same as primary
+  // Chat Colors (Updated to match register theme)
+  static const Color chatBubbleUser = Color(0xFF00BFA6);     // Teal accent
   static const Color chatBubbleOther = Color(0xFFEAEAEA);    // Light gray bubble
-  static const Color chatBubbleUserDark = Color(0xFF5B9BEB); // Soft blue bubble
-  static const Color chatBubbleOtherDark = Color(0xFF3A3B47); // Muted dark bubble
+  static const Color chatBubbleUserDark = Color(0xFF00BFA6); // Teal accent
+  static const Color chatBubbleOtherDark = Color(0xFF2A2C36); // Dark surface color
 
   // Status Colors
   static const Color onlineGreen = Color(0xFF2ECC71);   // Modern green
   static const Color offlineGray = Color(0xFF95A5A6);   // Soft muted gray
-  static const Color awayOrange = Color(0xFFF39C12);// Warm orange
+  static const Color awayOrange = Color(0xFFF39C12);    // Warm orange
   static const Color messageListPage = Color(0xFF292F3F);
+
+  // Input field colors (matching register demo)
+  static const Color inputFillDark = Color(0xFF212121);  // Dark input background
+  static const Color inputBorderDark = Color(0xFF00BFA6); // Teal border
 }
 
 class AppTheme {
@@ -82,7 +86,7 @@ class AppTheme {
           foregroundColor: Colors.white,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         ),
@@ -92,10 +96,14 @@ class AppTheme {
         filled: true,
         fillColor: AppColors.surfaceLight,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.all(16),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.primaryLight, width: 1.5),
+        ),
+        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
       ),
     );
   }
@@ -126,7 +134,7 @@ class AppTheme {
       ),
 
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.surfaceDark,
+        backgroundColor: Colors.transparent,
         foregroundColor: AppColors.textPrimaryDark,
         elevation: 0,
         centerTitle: true,
@@ -136,9 +144,9 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryDark,
           foregroundColor: Colors.white,
-          elevation: 0,
+          elevation: 4,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         ),
@@ -146,12 +154,16 @@ class AppTheme {
 
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.surfaceDark,
+        fillColor: AppColors.inputFillDark,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.all(16),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.inputBorderDark, width: 1.5),
+        ),
+        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
       ),
     );
   }

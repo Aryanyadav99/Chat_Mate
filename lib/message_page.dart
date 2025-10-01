@@ -21,6 +21,7 @@ class MessagePage extends StatelessWidget {
         ],
       ),
       body: Column(
+
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Recent Chats title
